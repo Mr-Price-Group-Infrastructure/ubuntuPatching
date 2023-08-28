@@ -27,6 +27,20 @@ EOF
 systemctl enable unattended-upgrades
 systemctl start unattended-upgrades
 
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
+
+# Check if cron is active
+if systemctl is-active --quiet cron; then
+  echo "Cron is already running."
+else
+  echo "Starting Cron..."
+  systemctl start cron
+  echo "Cron started."
+fi
+
 # Create a cron job for Monday at 6 AM
 (crontab -l ; echo "0 6 * * 1 /path/to/your/patch_server.sh") | crontab -
 
