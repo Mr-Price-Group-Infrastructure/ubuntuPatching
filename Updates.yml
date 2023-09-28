@@ -1,0 +1,5 @@
+# Updates.yml
+- hosts: all
+  tasks:
+  - name: Update all servers
+    action: Update
