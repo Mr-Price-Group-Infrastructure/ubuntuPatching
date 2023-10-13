@@ -6,7 +6,7 @@
 
 ---
 - name: Update Ubuntu Servers
-  hosts: ubuntu_servers
+  hosts: all
   become: yes  # To run commands with sudo (root) privileges
 
   tasks:
