@@ -10,18 +10,8 @@
   become: yes  # To run commands with sudo (root) privileges
 
   tasks:
-    - name: Update APT package cache
-      command: /usr/bin/apt-get update
-      register: update_cache_result
+    - name: Update apt repo and cache on all Debian/Ubuntu boxes
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
 
-    - name: Display APT cache update summary
-      debug:
-        var: update_cache_result.stdout_lines
-
-    - name: Upgrade all packages to the latest version
-      command: /usr/bin/apt-get upgrade -y
-      register: upgrade_result
-
-    - name: Display package upgrade summary
-      debug:
-        var: upgrade_result.stdout_lines
+    - name: Upgrade all packages on servers
+      apt: upgrade=dist force_apt_get=yes
