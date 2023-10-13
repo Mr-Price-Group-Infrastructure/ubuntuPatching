@@ -1,0 +1,5 @@
+# reboot.yml
+- hosts: all
+  tasks:
+  - name: reboot all servers
+    action: reboot
