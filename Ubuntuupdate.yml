@@ -1,0 +1,23 @@
+# The playbook consists of three tasks:
+
+# The first task uses the apt module to update the APT package cache.
+# The second task uses the apt module to perform a distribution upgrade, effectively updating all packages to the latest versions.
+# The final task displays a summary of the updates performed.
+
+- name: Update Ubuntu Servers
+  hosts: all
+  become: yes  # To run commands with sudo (root) privileges
+
+  tasks:
+    - name: Update APT package cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to the latest version
+      apt:
+        upgrade: dist
+      register: update_result
+
+    - name: Display package update summary
+      debug:
+        var: update_result.stdout_lines
