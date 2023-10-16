@@ -18,8 +18,12 @@
       debug:
         var: update_cache_result.stdout_lines
 
-    # - name: Upgrade all packages on servers
-    #   apt:
-    #     upgrade: dist 
-    #     force_apt_get: yes
+    - name: Upgrade all packages on servers
+      shell: sudo apt-get upgrade -y
+      register: upgrade_result
+
+    - name: Display package upgrade summary
+      debug:
+        var: upgrade_result.stdout_lines
+    
 
