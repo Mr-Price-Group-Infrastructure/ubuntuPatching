@@ -1,0 +1,9 @@
+# serviceswiagentd.yml
+
+- name: Restart swiagentd service
+  hosts: all # Replace 'your_server' with the target server or group of servers where swiagentd service is running
+  tasks:
+    - name: Restart swiagentd service using shell command
+      become: yes  # This allows the playbook to run commands as a privileged user
+      shell: |
+        service swiagentd restart
