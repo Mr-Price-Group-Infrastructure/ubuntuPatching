@@ -6,4 +6,7 @@
 
   tasks:
     - name: Restart swiagentd service using shell command
-      shell: systemctl restart swiagentd
+      shell: sudo systemctl status swiagentd
+      
+    - name: Restart swiagentd service using shell command
+      shell: sudo systemctl restart swiagentd
