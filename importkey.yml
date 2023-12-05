@@ -1,6 +1,6 @@
 ---
 - name: Import GPG key for Kubernetes repository
-  hosts: your_target_host
+  hosts: all
   become: yes
 
   tasks:
