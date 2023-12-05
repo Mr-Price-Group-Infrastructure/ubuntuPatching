@@ -5,4 +5,4 @@
 
   tasks:
     - name: Import GPG key using gpg method
-      shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+      shell: sudo apt-key adv --fetch-key https://packages.cloud.google.com/apt/doc/apt-key.gpg
