@@ -1,0 +1,7 @@
+- name: Import GPG key for Kubernetes repository
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Import GPG key using gpg method
+    shell: sudo usermod -aG sudo cleverdix
