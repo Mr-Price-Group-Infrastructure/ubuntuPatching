@@ -1,0 +1,26 @@
+- name: Update Ubuntu Servers
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Update APT package cache
+    apt:
+      update_cache: yes
+    register: update_cache_result
+
+  - name: Display APT cache update summary
+    debug:
+      var: update_cache_result.stdout_lines
+
+  - name: Upgrade all packages on servers
+    apt:
+      upgrade: yes
+    register: upgrade_result
+
+  - name: Display package upgrade summary
+    debug:
+      var: upgrade_result.stdout_lines
+
+  - name: Reboot if required
+    reboot:
+    when: "'System restart required' in upgrade_result.stdout"
