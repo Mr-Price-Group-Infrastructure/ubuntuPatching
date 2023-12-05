@@ -1,0 +1,9 @@
+- name: Import GPG key for Kubernetes repository
+  hosts: your_target_host
+  become: yes
+
+  tasks:
+  - name: Import GPG key using apt_key
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
