@@ -4,7 +4,7 @@
 
   tasks:
   - name: Update APT package cache
-    shell: apt-get update
+    shell: sudo apt-get update
     register: update_cache_result
 
   - name: Display APT cache update summary
@@ -12,7 +12,7 @@
       var: update_cache_result.stdout_lines
 
   - name: Upgrade all packages on servers
-    shell: apt-get upgrade -y
+    shell: sudo apt-get upgrade -y
     register: upgrade_result
 
   - name: Display package upgrade summary
